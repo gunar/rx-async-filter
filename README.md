@@ -1,4 +1,4 @@
-# ![rxjs logo](https://frontendmasters.com/assets/logo-128.png) rx-async-filter
+# rx-async-filter ![rxjs logo](https://frontendmasters.com/assets/logo-128.png)
 
 [![CircleCI](https://circleci.com/gh/invisible-tech/rx-async-filter/tree/master.svg?style=svg&circle-token=a026fc0f2703e372d890aaf7e068a2a2aee2d83d)](https://circleci.com/gh/invisible-tech/rx-async-filter/tree/master)
 
