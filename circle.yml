@@ -7,7 +7,7 @@ machine:
     # For yarn
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
   node:
-    version: "8.4.0"
+    version: "8.5.0"
 
 test:
   override:
@@ -17,5 +17,4 @@ deployment:
   release:
     branch: master
     commands:
-      - 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
-      - npm publish
+      - ./node_modules/.bin/publish
