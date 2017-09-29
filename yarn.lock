@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@invisible/publish@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@invisible/publish/-/publish-1.1.1.tgz#5538a9e0a0a54fd85c6256c6afe7b54599683184"
+"@invisible/publish@1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@invisible/publish/-/publish-1.1.5.tgz#f4f392be27748b3ecb3f8bcde5b261b9f5d7377c"
   dependencies:
     cross-spawn "^5.1.0"
     lodash "^4.17.4"
@@ -301,11 +301,11 @@ resumer@~0.0.0:
   dependencies:
     through "~2.3.4"
 
-rx-lite@^4.0.8:
+rx-lite@4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-rxjs@^5.4.3:
+rxjs@5.4.3:
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.3.tgz#0758cddee6033d68e0fd53676f0f3596ce3d483f"
   dependencies:
@@ -368,7 +368,7 @@ tap-out@^1.4.1:
     split "^1.0.0"
     trim "0.0.1"
 
-tap-spec@^4.1.1:
+tap-spec@4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/tap-spec/-/tap-spec-4.1.1.tgz#e2e9f26f5208232b1f562288c97624d58a88f05a"
   dependencies:
@@ -381,7 +381,7 @@ tap-spec@^4.1.1:
     tap-out "^1.4.1"
     through2 "^2.0.0"
 
-tape@^4.8.0:
+tape@4.8.0:
   version "4.8.0"
   resolved "https://registry.yarnpkg.com/tape/-/tape-4.8.0.tgz#f6a9fec41cc50a1de50fa33603ab580991f6068e"
   dependencies:
