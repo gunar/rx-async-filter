@@ -1,0 +1,65 @@
+version: 2.0
+jobs:
+  checkout:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "yarn.lock" }}
+          - v2-dependencies-
+      - run:
+          name: Install Dependencies
+          command: ls && yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+            - node_modules
+
+  test:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:8
+    environment:
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Run Tests
+          command: yarn test
+
+  publish:
+    working_directory: ~/project
+    docker:
+      - image: circleci/node:8
+    environment:
+      - NODE_ENV: production
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Publish NPM Package
+          command: ./node_modules/.bin/publish
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - checkout
+      - test:
+          requires:
+            - checkout
+      - publish:
+          requires:
+            - checkout
+            - test
+          filters:
+            branches:
+              only: master
