@@ -11,11 +11,10 @@ npm install rx-async-filter
 ## Example
 
 ```js
-const Rx = require('rx-lite')
-// works with 
-require('rx-async-filter')(Rx)
+const { from } = require('rxjs');
+const asyncFilter = require('rx-async-filter');
 
-  Rx.Observable.fromArray([1, 1, 2, 1, 1])
-    .asyncFilter(async x => x === 2)
-    .subscribe(() => t.end())
+from([1, 1, 2, 1, 1])
+  .pipe(asyncFilter(async x => x === 2))
+  .subscribe(() => t.end());
 ```
