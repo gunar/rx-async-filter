@@ -7,7 +7,7 @@
     "@invisible/publish": "1.1.6",
     "rx-lite": "4.0.8",
     "rxjs": "5.4.3",
-    "tap-spec": "4.1.1",
+    "tap-spec": "4.1.2",
     "tape": "4.8.0"
   },
   "scripts": {
