@@ -1,29 +1,23 @@
-const test = require('tape')
+const test = require('tape');
+const { from } = require('rxjs');
+const asyncFilter = require('.');
 
-;[
-  {
-    name: 'rx-lite',
-    lib: require('rx-lite'),
-  },
-  {
-    name: 'rxjs',
-      lib: require('rxjs'),
-  },
-].forEach(
-  ({ name, lib: Rx }) => {
-    require('.')(Rx)
-    test(`works for ${name}`, t => {
-      t.plan(2)
+test(`works for rxjs`, t => {
+  t.plan(2);
 
-      Rx.Observable.from([1, 1, 2, 1, 1])
-        .asyncFilter(async x => x === 2)
-        .subscribe(() => t.pass('filters stuff'))
+  from([1, 1, 2, 1, 1])
+    .pipe(asyncFilter(async x => x === 2))
+    .subscribe({
+      next: x => {
+        if (x !== 2) t.error();
+      },
+      complete: () => t.pass('filters stuff')
+    });
 
-      Rx.Observable.from([1])
-        .asyncFilter(async x => true)
-        .subscribe(x => {
-          if (x === 1) t.pass('returns original input (instead of predicate\'s)')
-          else t.error()
-        }, t.error)
-    })
-  })
+  from([1])
+    .pipe(asyncFilter(async x => true))
+    .subscribe(x => {
+      if (x === 1) t.pass("returns original input (instead of predicate's)");
+      else t.error();
+    }, t.error);
+});
